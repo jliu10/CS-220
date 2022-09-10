@@ -40,6 +40,15 @@ int main() {
     printf("----- TESTING count_vowels -----\n");
     char *str = "Hello World";
     printf("%s : %d\n", str, count_vowels(str));
+    str = "";
+    printf("%s : %d\n", str, count_vowels(str));
+    str = "abcdefghijklmnopqrstuvwxyz";
+    printf("%s : %d\n", str, count_vowels(str));
+    str = "EduCAtion";
+    printf("%s : %d\n", str, count_vowels(str));
+    str = "The quick brown fox jumped over the lazy dog";
+    printf("%s : %d\n", str, count_vowels(str));
+
     printf("\n");
 
     printf("----- TESTING reverse_words -----\n");
