@@ -62,13 +62,13 @@ char rotate_letter(char c, unsigned int disp) {
     char res = c;
     if(IS_UPPER(c)) {
         if(c + disp > 'Z') {
-            disp = 26 - disp;
+            disp = disp - ('Z' - c);
             res = 'A' + disp - 1;
         }
         else res = c + disp;
     } else if(IS_LOWER(c)) {
         if(c + disp > 'z') {
-            disp = 26 - disp;
+            disp = disp - ('z' - c);
             res = 'a' + disp - 1;
         }
         else res = c + disp;
@@ -78,6 +78,7 @@ char rotate_letter(char c, unsigned int disp) {
 void *rotate_string_in_place(char *str, unsigned int disp) {
     disp = disp % 26;
     while(*str != '\0') {
+        // printf("*str = %c", *str);
         *str = rotate_letter(*str, disp);
         str++;
     }
@@ -125,10 +126,13 @@ int main() {
     printf("\n");
 
     printf("----- TESTING rotate_string_in_place -----\n");
+    char ch = 'H';
+    int disp = 26;
+    printf("rotate %c by %d : %c\n", ch, disp, rotate_letter(ch, disp));
     str = "Hello World";
     printf("%s : ", str);
     rotate_string_in_place(str, 5);
-    printf("%s\n", str);
+    // printf("%s\n", str);
     str = "";
     str = "Hey You!";
     str = "gcc -c hw.c -o hw";
